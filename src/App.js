@@ -1,8 +1,5 @@
-// ...existing code...
 import React, { useEffect, useState } from 'react';
 import './App.css';
-// ...existing code...
-
 function App() {
   // Helper to load images from /src/media for both Vite and Webpack dev setups
   const loadImages = () => {
@@ -13,7 +10,7 @@ function App() {
         return Object.values(modules).map((m) => (m && m.default) || m);
       }
     } catch (e) {
-      // fall through to webpack approach
+      console.warn("falling through to webpack approach")
     }
 
     // Webpack (CRA): require.context
@@ -40,7 +37,7 @@ function App() {
     if (!imgs.length) {
       return (
         <div className="w-full h-48 bg-gray-100 rounded-lg flex items-center justify-center">
-          <span className="text-gray-500">No media found in /src/media</span>
+          <span className="text-gray-500">No media found</span>
         </div>
       );
     }
