@@ -103,8 +103,8 @@ function App() {
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-2">Column 3</h2>
-            <p className="text-gray-600">Placeholder text for the third column.</p>
+            <h2 className="text-xl font-semibold mb-2">About Our Team</h2>
+            <p className="text-gray-600"><a href="https://google.com">Click here to learn more about our team!</a></p>
           </div>
         </div>
       </main>
