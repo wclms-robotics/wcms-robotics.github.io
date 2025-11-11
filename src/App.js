@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import AboutPage from './pages/About';
+import About from './pages/About'; 
 function App() {
   // Helper to load images from /src/media for both Vite and Webpack dev setups
   const loadImages = () => {
@@ -76,57 +76,58 @@ function App() {
                 aria-label={`go-to-${i}`} />
             ))}
           </div>
-        </div></>
-    );
-  };
+        </div>
+      );
+    };
 
-  /*Add Subpages*/
+  // Home page content as a component
+  const HomePage = () => (
+    <div className="App bg-gray-50 min-h-screen">
+      <header className="App-header text-white py-8">
+        <h1 className="text-3xl font-semibold text-center">WCMS LegoTechs</h1>
+      </header>
 
-return (
-    <Router>
-      <div className="App bg-gray-50 min-h-screen">
-        <header className="App-header text-white py-8 bg-blue-600">
-          <h1 className="text-3xl font-semibold text-center">WCMS LegoTechs</h1>
-          <nav className="flex justify-center gap-4 mt-4">
-            <Link to="/" className="text-white hover:underline">Home</Link>
-            <Link to="/about" className="text-white hover:underline">About</Link>
-          </nav>
-        </header>
+      <main className="container mx-auto px-4 py-8">
+        <div className="media-carousel flex items-center justify-center mb-8">
+          <Carousel imgs={images} />
+        </div>
 
-        <main className="container mx-auto px-4 py-8">
-          <Routes>
-            <Route path="/" element={
-              <>
-                <div className="media-carousel flex items-center justify-center mb-8">
-                  <Carousel imgs={images} />
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold mb-2">Column 1</h2>
+            <p className="text-gray-600">Placeholder text for the first column.</p>
+          </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-white rounded-lg shadow p-6">
-                    <h2 className="text-xl font-semibold mb-2">Column 1</h2>
-                    <p className="text-gray-600">Placeholder text for the first column.</p>
-                  </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold mb-2">Column 2</h2>
+            <p className="text-gray-600">Placeholder text for the second column.</p>
+          </div>
 
-                  <div className="bg-white rounded-lg shadow p-6">
-                    <h2 className="text-xl font-semibold mb-2">Column 2</h2>
-                    <p className="text-gray-600">Placeholder text for the second column.</p>
-                  </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold mb-2">About Our Team</h2>
+            <p className="text-gray-600">
+              Click <Link to="/about" className="text-blue-600 hover:underline">here</Link> to learn more about our team!
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
 
-                  <div className="bg-white rounded-lg shadow p-6">
-                    <h2 className="text-xl font-semibold mb-2">About Our Team</h2>
-                    <p className="text-gray-600">
-                      Click <a href="/Home" className="text-blue-600 underline">here</a> to learn more about our team!
-                    </p>
-                  </div>
-                </div>
-              </>
-            } />
-
-            <Route path="/about" element={<AboutPage />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+  return (
+    <div>
+      <nav className="bg-gray-800 text-white py-4">
+        <div className="container mx-auto px-4 flex gap-6">
+          <Link to="/" className="hover:text-gray-300">Home</Link>
+          <Link to="/about" className="hover:text-gray-300">About</Link>
+        </div>
+      </nav>
+      
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </div>
   );
 }
 
